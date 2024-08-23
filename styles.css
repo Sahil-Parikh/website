@@ -3,13 +3,19 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes up the full viewport height */
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #474747;
     padding: 10px 0;
     text-align: center;
+    z-index: 1000;
 }
 
 header h1 {
@@ -32,16 +38,13 @@ nav ul li a {
 }
 
 main {
-    padding: 20px;
-}
-
-h2 {
-    color: #333;
-}
-
-section#about-me,
-section#portfolio {
-    margin-bottom: 20px;
+    flex: 1; /* Allows the main content to grow and push the footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 60px; /* Adjust to avoid header overlap */
 }
 
 footer {
@@ -49,19 +52,80 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: relative;
-    bottom: 0;
     width: 100%;
+    margin-top: auto; /* Pushes the footer to the bottom */
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* Index Page Styles */
+#about-me, #education, #past-experience, #skills {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    max-height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
-.skills li {
-    flex: 1 1 45%; /* Adjust the percentage to control the width of the columns */
+#about-me:hover, #education:hover, #past-experience:hover, #skills:hover {
+    max-height: 1000px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#about-me .content, #education .content, #past-experience .content, #skills .content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 20px;
+}
+
+#about-me:hover .content, #education:hover .content, #past-experience:hover .content, #skills:hover .content {
+    opacity: 1;
+}
+
+/* Portfolio Page Styles */
+#portfolio {
+    margin-top: 60px; /* Ensure there is space for the portfolio heading */
+}
+
+#portfolio ul {
+    list-style: none;
+    padding: 0;
+}
+
+#portfolio li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    max-height: 80px; /* Adjust this to ensure the title and padding are visible */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+}
+
+#portfolio li:hover {
+    max-height: 1000px; /* A large enough height to show all content */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    height: auto; /* Ensures that height adjusts dynamically */
+}
+
+#portfolio li p, #portfolio li ul, #portfolio li h4 {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 10px;
+    transform: translateY(-20px); /* Start content slightly above */
+    position: relative;
+}
+
+#portfolio li:hover p, #portfolio li:hover ul, #portfolio li:hover h4 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Default link styles - black for all links */
@@ -69,6 +133,24 @@ a {
     color: black;
 }
 
+/* White links in the header */
 header a, nav a {
     color: white;
+}
+h2, h3 {
+    margin: 0; /* Ensures there's no extra margin causing cut-off issues */
+}
+
+#portfolio h2 {
+    padding: 20px 0; /* Add padding for spacing */
+    font-size: 32px; /* Increase font size */
+    color: #333; /* Ensure the text color is clear */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove any default margin */
+}
+
+#portfolio h3 {
+    padding: 5px 0;
+    font-size: 20px;
+    color: #333;
 }
