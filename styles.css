@@ -9,22 +9,53 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #333;
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #474747;
-    padding: 10px 0;
-    text-align: center;
     z-index: 1000;
+    position: relative;
+}
+
+.social-nav {
+    position: absolute;
+    left: 20px; /* Position icons on the left side */
+    top: 50%;
+    transform: translateY(-50%); /* Center icons vertically */
+}
+
+.social-nav a {
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 32px; /* Adjust the size of the icons */
+    height: 32px;
+    vertical-align: middle;
+    background-color: transparent; /* Ensure the background is transparent */
+    border: none; /* Ensure no border is applied */
 }
 
 header h1 {
+    text-align: center;
     margin: 0;
+    color: white;
+    line-height: 1; /* Reduce line height if needed */
+    padding: 0; /* Ensure there's no extra padding */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 20px; /* Position navigation links on the right side */
+    top: 50%;
+    transform: translateY(-50%); /* Center navigation vertically */
 }
 
 nav ul li {
@@ -38,13 +69,14 @@ nav ul li a {
 }
 
 main {
+    padding-top: 10px; /* Adjust this value to match the height of the header, ensuring no overlap */
     flex: 1; /* Allows the main content to grow and push the footer down */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Aligns content to the top rather than the center */
     align-items: center;
     flex-direction: column;
     width: 100%;
-    margin-top: 60px; /* Adjust to avoid header overlap */
+    margin: 0; /* Remove the margin to avoid extra spacing */
 }
 
 footer {
@@ -65,9 +97,15 @@ footer {
     margin-bottom: 20px;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-    max-height: 60px;
+    max-height: 80px; /* Matches the portfolio items */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    width: 60%; /* Center the boxes and match the portfolio page */
+    margin-left: auto; /* Center the boxes */
+    margin-right: auto; /* Center the boxes */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content */
 }
 
 #about-me:hover, #education:hover, #past-experience:hover, #skills:hover {
@@ -78,21 +116,49 @@ footer {
 #about-me .content, #education .content, #past-experience .content, #skills .content {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    margin-top: 20px;
+    margin-top: 10px;
+    transform: translateY(-20px); /* Start content slightly above */
 }
 
 #about-me:hover .content, #education:hover .content, #past-experience:hover .content, #skills:hover .content {
     opacity: 1;
+    transform: translateY(0); /* Reveal content on hover */
 }
 
 /* Portfolio Page Styles */
 #portfolio {
-    margin-top: 60px; /* Ensure there is space for the portfolio heading */
+    padding-top: 50px; /* Ensure this matches or slightly exceeds the header height */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
+
+
+#portfolio h2 {
+    padding: 10px 0; /* Add padding for spacing */
+    font-size: 32px; /* Increase font size */
+    color: #333; /* Ensure the text color is clear */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove any default margin */
+}
+
+#portfolio h3 {
+    padding: 5px 0;
+    font-size: 20px;
+    color: #333;
+}
+
 
 #portfolio ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    width: 100%; /* Ensure full width usage */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the list items */
 }
 
 #portfolio li {
@@ -103,10 +169,10 @@ footer {
     margin-bottom: 20px;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-    max-height: 80px; /* Adjust this to ensure the title and padding are visible */
+    max-height: 80px; /* Adjusted for title-only visibility */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    position: relative;
+    width: 60%; /* Adjust the width of the boxes */
 }
 
 #portfolio li:hover {
@@ -139,18 +205,4 @@ header a, nav a {
 }
 h2, h3 {
     margin: 0; /* Ensures there's no extra margin causing cut-off issues */
-}
-
-#portfolio h2 {
-    padding: 20px 0; /* Add padding for spacing */
-    font-size: 32px; /* Increase font size */
-    color: #333; /* Ensure the text color is clear */
-    text-align: center; /* Center the text */
-    margin: 0; /* Remove any default margin */
-}
-
-#portfolio h3 {
-    padding: 5px 0;
-    font-size: 20px;
-    color: #333;
 }
