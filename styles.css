@@ -2,10 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: url('web-bkgrd.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensure the image covers the entire viewport */
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body takes up the full viewport height */
+    min-height: 100vh;
+    color: #fff; /* Default text color for visibility */
 }
 
 header {
@@ -13,19 +15,18 @@ header {
     justify-content: center;
     align-items: center;
     padding: 20px 0;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    position: relative;
 }
 
 .social-nav {
     position: absolute;
-    left: 20px; /* Position icons on the left side */
+    left: 20px;
     top: 50%;
-    transform: translateY(-50%); /* Center icons vertically */
+    transform: translateY(-50%);
 }
 
 .social-nav a {
@@ -33,19 +34,19 @@ header {
 }
 
 .social-icon {
-    width: 32px; /* Adjust the size of the icons */
+    width: 32px;
     height: 32px;
     vertical-align: middle;
-    background-color: transparent; /* Ensure the background is transparent */
-    border: none; /* Ensure no border is applied */
+    background-color: transparent;
+    border: none;
 }
 
 header h1 {
     text-align: center;
     margin: 0;
     color: white;
-    line-height: 1; /* Reduce line height if needed */
-    padding: 0; /* Ensure there's no extra padding */
+    line-height: 1;
+    padding: 0;
 }
 
 nav ul {
@@ -53,9 +54,9 @@ nav ul {
     padding: 0;
     margin: 0;
     position: absolute;
-    right: 20px; /* Position navigation links on the right side */
+    right: 20px;
     top: 50%;
-    transform: translateY(-50%); /* Center navigation vertically */
+    transform: translateY(-50%);
 }
 
 nav ul li {
@@ -69,79 +70,81 @@ nav ul li a {
 }
 
 main {
-    padding-top: 10px; /* Adjust this value to match the height of the header, ensuring no overlap */
-    flex: 1; /* Allows the main content to grow and push the footer down */
+    padding-top: 100px; /* Prevent overlap with fixed header */
+    flex: 1;
     display: flex;
-    justify-content: flex-start; /* Aligns content to the top rather than the center */
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    margin: 0; /* Remove the margin to avoid extra spacing */
 }
 
 footer {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8);
     color: #fff;
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    margin-top: auto;
 }
 
-/* Index Page Styles */
-#about-me, #education, #past-experience, #skills {
-    background-color: #fff;
+/* General Section Styling with More Padding */
+.hover-section {
+    margin-bottom: 40px; /* Space between sections */
+    padding: 40px; /* Increased padding for more spacing within sections */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-    max-height: 80px; /* Matches the portfolio items */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    max-height: 80px; /* Default collapsed height */
+    overflow: hidden;
     cursor: pointer;
-    width: 60%; /* Center the boxes and match the portfolio page */
-    margin-left: auto; /* Center the boxes */
-    margin-right: auto; /* Center the boxes */
+    color: #333; /* Default text color */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content */
+    align-items: center;
+    max-width: 800px; /* Restrict section width */
+    width: 90%; /* Ensure responsiveness */
+    margin-left: auto;
+    margin-right: auto; /* Center sections */
 }
 
-#about-me:hover, #education:hover, #past-experience:hover, #skills:hover {
-    max-height: 1000px;
+/* Expanded State for Hover and Open Classes */
+.hover-section:hover, .hover-section.open {
+    max-height: 1000px; /* Fully expanded height */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-#about-me .content, #education .content, #past-experience .content, #skills .content {
+.hover-section .content {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     margin-top: 10px;
-    transform: translateY(-20px); /* Start content slightly above */
+    transform: translateY(-20px); /* Initially hidden */
 }
 
-#about-me:hover .content, #education:hover .content, #past-experience:hover .content, #skills:hover .content {
+.hover-section:hover .content, .hover-section.open .content {
     opacity: 1;
-    transform: translateY(0); /* Reveal content on hover */
+    transform: translateY(0); /* Fully visible */
 }
 
 /* Portfolio Page Styles */
 #portfolio {
-    padding-top: 50px; /* Ensure this matches or slightly exceeds the header height */
+    padding-top: 50px;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    color: #333; /* Text color for visibility */
 }
 
-
 #portfolio h2 {
-    padding: 10px 0; /* Add padding for spacing */
-    font-size: 32px; /* Increase font size */
-    color: #333; /* Ensure the text color is clear */
-    text-align: center; /* Center the text */
-    margin: 0; /* Remove any default margin */
+    padding: 10px 0;
+    font-size: 32px;
+    color: #333;
+    text-align: center;
+    margin: 0;
 }
 
 #portfolio h3 {
@@ -150,59 +153,121 @@ footer {
     color: #333;
 }
 
-
 #portfolio ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 100%; /* Ensure full width usage */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the list items */
+    align-items: center;
 }
 
 #portfolio li {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 20px;
+    padding: 40px;
     margin-bottom: 20px;
-    overflow: hidden;
     transition: max-height 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-    max-height: 80px; /* Adjusted for title-only visibility */
+    max-height: 80px; /* Default collapsed height */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    width: 60%; /* Adjust the width of the boxes */
-}
-
-#portfolio li:hover {
-    max-height: 1000px; /* A large enough height to show all content */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    height: auto; /* Ensures that height adjusts dynamically */
-}
-
-#portfolio li p, #portfolio li ul, #portfolio li h4 {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    margin-top: 10px;
-    transform: translateY(-20px); /* Start content slightly above */
+    max-width: 800px; /* Restrict width of portfolio items */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #333;
+    overflow: hidden; /* Ensure no overflowing content is visible */
     position: relative;
 }
 
-#portfolio li:hover p, #portfolio li:hover ul, #portfolio li:hover h4 {
-    opacity: 1;
-    transform: translateY(0);
+#portfolio li:hover, #portfolio li.open {
+    max-height: 1000px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Default link styles - black for all links */
+#portfolio li p, #portfolio li ul, #portfolio li h4 {
+    opacity: 0; /* Initially hide all inner text */
+    transform: translateY(-20px); /* Position text slightly above */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition */
+    position: relative;
+}
+
+/* Hover state: Make inner content visible */
+#portfolio li:hover p, #portfolio li:hover ul, #portfolio li:hover h4 {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move into place */
+}
+
+/* Default link styles */
 a {
     color: black;
+    text-decoration: none;
 }
 
-/* White links in the header */
 header a, nav a {
     color: white;
 }
-h2, h3 {
-    margin: 0; /* Ensures there's no extra margin causing cut-off issues */
+
+/* Business Card Section */
+.business-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 40px; /* Increased padding for the business card */
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.business-card h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.business-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.business-card .social-links {
+    margin: 20px 0;
+}
+
+.business-card .social-links a {
+    margin: 0 10px;
+}
+
+.business-card .social-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* About Me Section */
+.about-me {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 40px; /* Increased padding for About Me */
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    color: #333;
+}
+
+.about-me h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.about-me p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
 }
