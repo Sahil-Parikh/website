@@ -200,6 +200,18 @@ footer {
     transform: translateY(0); /* Move into place */
 }
 
+/* Open State (for click-to-stay-open) */
+#portfolio li.open {
+    max-height: 1000px; /* Fully expanded height */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    overflow: visible; /* Allow full content visibility */
+}
+
+#portfolio li.open p, #portfolio li.open ul, #portfolio li.open h4 {
+    opacity: 1; /* Ensure content remains visible */
+    transform: translateY(0); /* Move into place */
+}
+
 /* Default link styles */
 a {
     color: black;
